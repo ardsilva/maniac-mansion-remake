@@ -1,0 +1,54 @@
+:root {
+  --bg: #07070c;
+  --ink: #f2efe6;
+  --dim: #9a98a8;
+  --accent: #f6e26a;
+  --panel: #14141f;
+  --line: #2c2c40;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
+#stage { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; background: var(--bg); }
+#screen {
+  width: min(100vw, 160vh);
+  height: min(62.5vw, 100vh);
+  display: block;
+  outline: none;
+  cursor: none;
+  image-rendering: auto;
+  background: #000;
+}
+#screen.idle { visibility: hidden; }
+
+#loader {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 24px 16px; text-align: center; background: radial-gradient(ellipse at 50% 30%, #1b1b33 0%, var(--bg) 70%);
+}
+#loader[hidden] { display: none; }
+#loader h1 { margin: 0; font-size: clamp(32px, 6vw, 64px); letter-spacing: 0.02em; color: var(--accent); }
+.lead { margin: 0; max-width: 46ch; color: var(--dim); line-height: 1.5; }
+.lead strong { color: var(--ink); }
+#drop {
+  display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center;
+  width: min(520px, 100%); min-height: 150px; padding: 20px; border: 2px dashed var(--line); border-radius: 14px;
+  background: var(--panel); color: var(--dim); cursor: pointer; transition: border-color .15s, background .15s;
+}
+#drop:hover, #drop.over, #drop:focus-within { border-color: var(--accent); background: #1b1b2b; }
+#drop .big { color: var(--ink); font-size: 18px; font-weight: 600; }
+#drop code { color: var(--accent); }
+#drop input { position: absolute; opacity: 0; pointer-events: none; }
+#status { min-height: 1.4em; margin: 0; color: #f26a5c; }
+.hint { margin: 0; font-size: 13px; color: var(--dim); }
+
+#bar {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+  padding: 6px; border-radius: 10px; background: rgba(12, 12, 20, .82); border: 1px solid var(--line);
+  opacity: 0; transition: opacity .2s; max-width: calc(100vw - 16px);
+}
+#bar[hidden] { display: none; }
+#bar.show, #bar:hover, #bar:focus-within { opacity: 1; }
+#bar button {
+  font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); cursor: pointer;
+}
+#bar button:hover, #bar button:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }

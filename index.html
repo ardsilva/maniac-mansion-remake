@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mansion Remake</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="stage">
+  <canvas id="screen" width="1280" height="800" tabindex="0"></canvas>
+
+  <section id="loader">
+    <h1>Mansion Remake</h1>
+    <p class="lead">A browser engine for the 1988 Atari ST adventure. It plays from <strong>your own disk image</strong> — no game data is included here.</p>
+    <label id="drop" for="file">
+      <span class="big">Drop your <code>.st</code> disk image here</span>
+      <span>or click to choose a file</span>
+      <input id="file" type="file" accept=".st,.ST,application/octet-stream">
+    </label>
+    <p id="status" role="status"></p>
+    <p class="hint">The disk stays in this browser (saved locally so you only pick it once).</p>
+  </section>
+
+  <nav id="bar" hidden>
+    <button id="btn-full" title="Fullscreen (F)">Fullscreen</button>
+    <button id="btn-skip" title="Skip cutscene (Esc)">Skip</button>
+    <button id="btn-save" title="Save (F5)">Save</button>
+    <button id="btn-load" title="Load (F7)">Load</button>
+    <button id="btn-smooth" title="Cycle graphics mode">Graphics: remaster</button>
+    <button id="btn-pal" title="Toggle palette">Palette: remaster</button>
+    <button id="btn-sound" title="Toggle sound">Sound: on</button>
+    <button id="btn-code" title="Show the security-door code book">Code book: on</button>
+    <button id="btn-eject" title="Forget the stored disk">Eject disk</button>
+  </nav>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
